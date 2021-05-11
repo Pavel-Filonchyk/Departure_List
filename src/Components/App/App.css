@@ -1,6 +1,33 @@
+.html, body{
+  margin: 0;
+  padding: 0;
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  background-image: url(img/airliner.jpg);
+  height: 100vh;
+  background-size: cover;     
+  margin: 0
+  }
+.center{
+  margin-top: 30px;
+  color:whitesmoke;
+}
+.wrap_page{
+  display: flex;
+  justify-content: center;
+  
+}
+.pages{
+  padding: 15px;
+}
+p{
+  margin: 3px;
+}
 .icon{
-    font-size: 12px;
-    padding-left: 6px;
-    padding-right: 6px;
-    cursor: pointer;
+  font-size: 12px;
+  padding-left: 6px;
+  padding-right: 6px;
+  cursor: pointer;
 }

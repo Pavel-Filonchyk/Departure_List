@@ -57,43 +57,52 @@ class App extends React.Component {
         pages.push(i)
       }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input  type="text" placeholder="date city"
-            onChange={this.onInput}
-          />
-          <button type="reset"
-            onClick={this.closeModal}
-          >&times;</button>
-        </form>
-        <div className = "result">
-            {result}
-        </div>
-        <table border="1px">
-        <caption>Departures</caption>
-          <tr>
-            <td width="100">Date
-    
-            </td>
-            <td width="100">City
+      <div className="wrapper">
+        <div className="center">
+          <form onSubmit={this.handleSubmit}>
+            <input  type="text" placeholder="date city"
+              onChange={this.onInput}
+            />
+            <button type="reset"
+              onClick={this.closeModal}
+            >&times;</button>
+          </form>
+          <div className = "result">
+              {result}
+          </div>
+          <table border="1px">
+          <caption><h3>Departures</h3></caption>
+            <tr>
+              <td width="100">Date
               <i className="icon fas fa-chevron-left"
-                onClick={this.onBottomItems}
-              ></i>
-              <i className="icon fas fa-chevron-right"
-                onClick={this.onTopItems}
-              ></i>
-            </td>
-            <td width="100">Gate</td>
-            <td width="100">Distance</td>
-          </tr>
-        </table>
-        {table}
-        <div>
-          {pages.map(p =>{   
-            return <button className="this.props.currentPage === p" key={p}
-              onClick={()=>this.onSendToServer(p)}
-            >{p}</button >
-          })}
+                  onClick={this.onBottomItems}
+                ></i>
+                <i className="icon fas fa-chevron-right"
+                  onClick={this.onTopItems}
+                ></i>
+              </td>
+              <td width="100">City
+                <i className="icon fas fa-chevron-left"
+                  onClick={this.onBottomItems}
+                ></i>
+                <i className="icon fas fa-chevron-right"
+                  onClick={this.onTopItems}
+                ></i>
+              </td>
+              <td width="100">Gate</td>
+              <td width="100">Distance</td>
+            </tr>
+          </table>
+          {table}
+          <div className="wrap_page">
+            <div className="pages">
+              {pages.map(p =>{   
+                return <button className="this.props.currentPage === p" key={p}
+                  onClick={()=>this.onSendToServer(p)}
+                >{p}</button >
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );
