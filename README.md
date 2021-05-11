@@ -1,4 +1,4 @@
-npm start for faile called a front
+npm start for file called a front
 
 
-npm run start for faile called a server
+npm run start for file called a server
