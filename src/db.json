@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "date": 1, 
+      "city": "Minsk", 
+      "gate": 10, 
+      "distance": 110,
+      "id": 1
+    },
+    {
+      "date": 2, 
+      "city": "Ibiza", 
+      "gate": 11, 
+      "distance": 1400,
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+.result{
+    position: absolute;
+}
+.wrapper_card{
+    align-items:center;
+    width:250px;
+    height: 150px; 
+    background-color:wheat;
+    border-radius: 16px;
+    border:2px solid rgba(0,0,0,.2);
+    padding: 60px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    margin: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color:white;
+}
+
+.close_result{
+    position: absolute;
+    bottom: 184px;
+    right: 70px;
+    font-size:30px;
+    color:#000;
+    opacity:.5;
+    font-weight:700;
+    border:none;
+    background-color:transparent;
+    cursor:pointer
+}
+

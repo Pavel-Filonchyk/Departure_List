@@ -1,0 +1,14 @@
+GET http://localhost:3001/list/?page=1&size=2
+
+###
+GET http://localhost:3001/list/?page=2&size=2
+
+###
+GET http://localhost:3001/list/?page=3&size=2
+###
+GET http://localhost:3001/list/
+
+
+
+
+
