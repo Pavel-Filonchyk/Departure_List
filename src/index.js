@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 //import {Provider} from 'react-redux';
 import App from './Components/App/App';
 import {ContextApp, initialState} from "./reducer"
-
+ 
 
 ReactDOM.render(
   <ContextApp.Provider value={{initialState}}>
