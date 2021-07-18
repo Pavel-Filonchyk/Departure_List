@@ -3,6 +3,8 @@ const router = Router();
 
 const way = require("../data/data")
 router.get("/", (req, res) =>{  
+    res.set("Access-Control-Allow-Origin", "*")
+
     const page = req.query.page
     const size = req.query.size
     const startIndex = (page -1) * size

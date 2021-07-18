@@ -1,9 +1,8 @@
 import React from 'react';
 
-class Table extends React.Component {
-    render(){
-        const {date, city, gate, distance} = this.props.cell
-        return(
+export default function Table ({cell}) {
+    const {date, city, gate, distance} = cell
+    return(
         <table border="1px" cols="5">
             <tr>
                 <td width="100"
@@ -16,9 +15,6 @@ class Table extends React.Component {
                 <td width="100"
                     >{distance}</td>
             </tr>
-      </table>
-        )
-    }
+        </table>
+    )
 }
-
-export default Table

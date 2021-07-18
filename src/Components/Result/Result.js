@@ -1,7 +1,7 @@
 import React from 'react'
 import './Result.css'
 
-function Result({item}){
+export default function Result({item}){
     console.log(item)
     return(
         <div className="result d-flex justify-content-center">
@@ -17,4 +17,3 @@ function Result({item}){
         </div>
     )
 } 
-export default Result

@@ -1,16 +1,3 @@
-import {serverDBL} from './serverDBL'
-const getStartElems = () =>{
-    return (dispatch) =>{
-        serverDBL.getStartItems()  
-        .then((res) => dispatch(loader(res)))  
-    }
-}
-const getPageElems = (currentPage) =>{
-    return (dispatch) =>{
-        serverDBL.getPageItems(currentPage)  
-        .then((res) => dispatch(loader(res)))  
-    }
-}
 const loader = (data) => {
     return {
         type: 'LOADER',
@@ -39,20 +26,27 @@ const onTopItems = () => {
         type: 'ON_TOP_ITEMS',
     } 
 }
-const changePage = (data) => {
-    return {
-        type: 'CHANGE_PAGE',
-        payload: data
-    } 
+/*
+import {serverDBL} from './serverDBL'
+const getStartElems = () =>{
+    return (dispatch) =>{
+        serverDBL.getStartItems()  
+        .then((res) => dispatch(loader(res)))  
+    }
 }
-
+const getPageElems = (p) =>{
+    return (dispatch) =>{
+        serverDBL.getPageItems(p)  
+        .then((res) => dispatch(loader(res)))  
+    }
+}
+*/
 export {
-    getStartElems,
-    getPageElems,
+    //getStartElems,
+    //getPageElems,
     onInput,
     onBottomItems,
     onTopItems,
     loader,
     closeModal,
-    changePage,
 }

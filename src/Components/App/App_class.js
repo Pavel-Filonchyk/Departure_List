@@ -1,47 +1,39 @@
-import React, {useContext, useReducer} from 'react';
-import { useEffect} from 'react';
-
+import React from 'react';
+import {connect} from 'react-redux';
 import Table from '../Table/Table'
 import Result from '../Result/Result'
-import {onInput, onTopItems, loader, onBottomItems, closeModal, getStartElems, getPageElems} from '../../actions'
+import {onInput, onTopItems, onBottomItems, getStartElems, closeModal, getPageElems} from '../../actions'
 import './App.css';
-import {ContextApp, reducer} from "../../reducer"
 
 
-export default function App(){
-    const {initialState} = useContext(ContextApp)
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const {cells, text, pagesSize, totalElems} = state
-    console.log(cells)
-
-    useEffect(() => {
-      //getStartElems()
-      fetch('http://localhost:3001/list/?page=1&size=4', {credentians: "include"})
-        .then((response) => response.json())
-        .then((res) => dispatch(loader(res)))
-    }, [])
-    const onSendToServer = (p) => {
-        //getPageElems(p)
-        fetch(`http://localhost:3001/list/?page=${p}&size=4`, {credentians: "include"})
-        .then((response) => response.json())
-        .then((res) => dispatch(loader(res)))
-      }
-      const handleSubmit = (e) => {
-        e.preventDefault()
-      }
-      const isOnInput = (e) => {
-        dispatch(onInput(e.target.value))
-      }
-      const isCloseModal = () => {
-        dispatch(closeModal())
-      }
-      const isOnTopItems = () => {
-        dispatch(onTopItems())
-      }
-      const isOnBottomItems = () => {
-        dispatch(onBottomItems())
-      }
+class App extends React.Component {
   
+  componentDidMount(){ 
+    this.props.getStartElems()
+  }
+  onSendToServer = (p) => {
+    this.props.getPageElems(p)
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+  }
+  onInput = (e) => {
+    this.props.onInput(e.target.value)
+  }
+  closeModal = () => {
+    this.props.closeModal()
+  }
+  onTopItems = () => {
+    this.props.onTopItems()
+  }
+  onBottomItems = () => {
+    this.props.onBottomItems()
+  }
+
+  render(){
+    const {cells, text, pagesSize, totalElems} = this.props
+    console.log(cells)
+    console.log(text)
     const table = cells.map(cell =>{
       return (<Table
         key={cell.id} 
@@ -64,12 +56,12 @@ export default function App(){
     return (
     <div className="wrapper">
       <div className="center">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
         <input  type="text" placeholder="date city"
-          onChange={isOnInput}
+          onChange={this.onInput}
         />
         <button type="reset"
-          onClick={isCloseModal}
+          onClick={this.closeModal}
         >&times;</button>
       </form>
       <div className = "result">
@@ -80,18 +72,18 @@ export default function App(){
         <tr>
           <td width="100">Date
           <i className="icon fas fa-chevron-left"
-              onClick={isOnBottomItems}
+              onClick={this.onBottomItems}
             ></i>
             <i className="icon fas fa-chevron-right"
-              onClick={isOnTopItems}
+              onClick={this.onTopItems}
             ></i>
           </td>
           <td width="100">City
             <i className="icon fas fa-chevron-left"
-              onClick={isOnBottomItems}
+              onClick={this.onBottomItems}
             ></i>
             <i className="icon fas fa-chevron-right"
-              onClick={isOnTopItems}
+              onClick={this.onTopItems}
             ></i>
           </td>
           <td width="100">Gate</td>
@@ -103,14 +95,33 @@ export default function App(){
         <div className="pages">
           {pages.map(p =>{   
             return <button className="this.props.currentPage === p" key={p}
-              onClick={()=>onSendToServer(p)}
+              onClick={()=>this.onSendToServer(p)}
             >{p}</button >
           })}
         </div>
       </div>
     </div>
   </div>
-  );
+  
+     
+    );
+  }
 }
 
-
+const mapStateToProps = (state) => {
+  return {
+    cells: state.cells,
+    text: state.text,
+    totalElems: state.totalElems,
+    pagesSize: state.pagesSize
+  }
+}
+const mapDispatchToProps = {
+  getStartElems,
+  getPageElems,
+  onInput,
+  onBottomItems, 
+  onTopItems,
+  closeModal
+}
+export default connect( mapStateToProps, mapDispatchToProps)(App)

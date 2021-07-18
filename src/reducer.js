@@ -1,12 +1,15 @@
-const initialState = {
+import React from 'react'
+
+export const ContextApp = React.createContext()
+
+export const initialState = { 
     cells: [],
     text: [],
     pagesSize: 4,
     totalElems: 9,
-    currentPage: 1
 }
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type){ 
         case 'LOADER':
         return {
@@ -17,11 +20,6 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             cells: action.payload
-        }
-        case 'CHANGE_PAGE':
-        return {
-            ...state,
-            currentPage: action.payload,  
         }
         case 'GET_TEXT':
         return {
@@ -65,5 +63,5 @@ const reducer = (state = initialState, action) => {
         return state;  
     }
 }
-export default reducer;  
+
   

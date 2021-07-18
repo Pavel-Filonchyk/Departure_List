@@ -25,7 +25,7 @@ exports.data = {
     "date": "2021-06-24", 
     "city": "Berlin", 
     "gate": "9", 
-    "distance": "1690",
+    "distance": "1580",
     "id": "4"
   },
   {
