@@ -1,6 +1,6 @@
 To start:
 
-npm init
+npm install
 
 - cd front - npm start
 
